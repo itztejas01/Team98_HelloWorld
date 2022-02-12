@@ -26,7 +26,7 @@
     if($prn_no == ""){
         $error = array(
             'success'=>false,
-            'http code'=>501,
+            'http code'=>512,
             "message"=>'Please enter prn no'
         );
     }else{
@@ -45,7 +45,7 @@
     }else{
         $succ = array(
             'success'=>true,
-            'http code'=>200,
+            'http code'=>512,
             'message'=>'Details not added'
         );
     }
