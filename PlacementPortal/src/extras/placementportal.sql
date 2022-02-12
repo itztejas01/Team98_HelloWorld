@@ -1,4 +1,5 @@
 -- phpMyAdmin SQL Dump
+<<<<<<< HEAD
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
@@ -9,6 +10,17 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
+=======
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Feb 12, 2022 at 10:03 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+>>>>>>> 2a74826c32aa725ff87cae48d06b3741225f3fb0
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -68,6 +80,10 @@ CREATE TABLE `job_details` (
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+<<<<<<< HEAD
+=======
+  `user_token` text NOT NULL,
+>>>>>>> 2a74826c32aa725ff87cae48d06b3741225f3fb0
   `user_name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `type` varchar(50) NOT NULL
