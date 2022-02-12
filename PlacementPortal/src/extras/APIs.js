@@ -1,1 +1,2 @@
-export const LOGIN_API = "192.168.29.216/Projects/PlacementPortal-apis/login.php";
+var apiHeader = 'http://192.168.29.135/PlacementPortal-apis'
+export const LOGIN_API = `${apiHeader}/PlacementPortal-apis/login.php`;

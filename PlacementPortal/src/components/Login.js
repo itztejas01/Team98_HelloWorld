@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Button, Label, TextField} from "./common";
 import HomeScreen from "./HomeScreen";
 
-import { usernameTextFieldChanged, passwordTextFieldChanged } from "../actions";
+import { usernameTextFieldChanged, passwordTextFieldChanged,loginAPI } from "../actions";
 
 class Login extends Component{
     constructor(props) {  
@@ -29,9 +29,9 @@ class Login extends Component{
         if (this.props.emailId == '' || !this.props.emailId.match(validEmail)) {
             //   code
         } else {
+            this.props.loginAPI();
             this.props.usernameTextFieldChanged('');
             this.props.passwordTextFieldChanged('');
-            this.props.loginAPI();
         }
     };
 
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
 
 });
 
-mapStateToProps = state => {
+const mapStateToProps = state => {
     return{
         username: state.login.username,
         password: state.login.password,
@@ -117,4 +117,5 @@ mapStateToProps = state => {
 export default connect(mapStateToProps, {
     usernameTextFieldChanged,
     passwordTextFieldChanged,
+    loginAPI
 }) (Login);
