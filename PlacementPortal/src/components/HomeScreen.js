@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, FlatList} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {StyleSheet, View, FlatList, ScrollView} from 'react-native';
 import {InfoCard, Label, SmallInfoCard, TitleText} from './common';
 
 const cardProp = [
