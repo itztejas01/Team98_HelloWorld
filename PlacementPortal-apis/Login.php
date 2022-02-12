@@ -18,11 +18,11 @@
         while($login_row = mysqli_fetch_array($login_result)) {
             if (strcmp($data['password'],$login_row['password'])==0) {
                 $token = generateToken();
-                $token_query = "UPDATE `login` SET `user_token`='$token' WHERE id=".$login_row[0]."";
+                $token_query = "UPDATE `login` SET `user_token`='$token' WHERE id=".$login_row['id']."";
                 if (mysqli_query($conn, $token_query)) {
                     if (strcmp($login_row['type'], 'student')==0) {
 
-                        $details_query = "SELECT * FROM student_details WHERE id=".$login_row[1]."";
+                        $details_query = "SELECT * FROM student_details WHERE id=".$login_row['id']."";
                         $details_result = mysqli_query ($conn, $details_query);
                         while($details_row = mysqli_fetch_array($details_result)) {
                             $name = $details_row[1];
@@ -48,12 +48,12 @@
 
                     } else if (strcmp($login_row['type'], 'super_admin') == 0) {
                         
-                        $details_query = "SELECT * FROM superadmin_details WHERE id=".$login_row[1]."";
+                        $details_query = "SELECT * FROM superadmin_details WHERE id=".$login_row['id']."";
                         $details_result = mysqli_query ($conn, $details_query);
                         while($details_row = mysqli_fetch_array($details_result)) {
-                            $name = $details_row[1];
-                            $contact = $details_row[2];
-                            $email = $details_row[3];
+                            $name = $details_row['full_name'];
+                            $contact = $details_row['contact'];
+                            $email = $details_row['email_id'];
                             $succ = array(
                                 "success"=> true,
                                 "message"=> "Logged in successfully",
@@ -74,7 +74,7 @@
 
                     } else if (strcmp($login_row['type'], 'other_admin') == 0) {
 
-                        $details_query = "SELECT * FROM other_admin_details WHERE id=".$login_row[1]."";
+                        $details_query = "SELECT * FROM other_admin_details WHERE id=".$login_row['id']."";
                         $details_result = mysqli_query ($conn, $details_query);
                         while($details_row = mysqli_fetch_array($details_result)) {
                             $name = $details_row[1];

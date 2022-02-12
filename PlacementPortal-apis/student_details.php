@@ -24,7 +24,7 @@
     $succ = array();
     
     if($prn_no == ""){
-        $error = array(
+        $succ = array(
             'success'=>false,
             'http code'=>512,
             "message"=>'Please enter prn no'
@@ -52,13 +52,5 @@
     }
 
     echo json_encode($succ);
-
-
-    
-
-
-
-
-
 
 ?>
