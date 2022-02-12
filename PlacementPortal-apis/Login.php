@@ -17,85 +17,82 @@
         $login_result = mysqli_query($conn, $login_query);
         while($login_row = mysqli_fetch_array($login_result)) {
             if (strcmp($data['password'],$login_row['password'])==0) {
+                if($login_row['user_token'] == ""){
+                    $first_time_login = 1;
+                }else{
+                    $first_time_login = 0;
+                }
                 $token = generateToken();
                 $token_query = "UPDATE `login` SET `user_token`='$token' WHERE id=".$login_row['id']."";
                 if (mysqli_query($conn, $token_query)) {
                     if (strcmp($login_row['type'], 'student')==0) {
 
-                        $details_query = "SELECT * FROM student_details WHERE id=".$login_row['id']."";
-                        $details_result = mysqli_query ($conn, $details_query);
-                        while($details_row = mysqli_fetch_array($details_result)) {
-                            $name = $details_row[1];
-                            $contact = $details_row[2];
-                            $email = $details_row[3];
+                            $user_id = $login_row['id'];
+                            $user_token = $token;
                             $succ = array(
                                 "success"=> true,
                                 "message"=> "Logged in successfully",
                                 'result'=>array(
                                     "user_details"=> array(
-                                        "user_id"=> $details_row[0],
-                                        "user_token"=> $token,
-                                        "user_name"=> $name,
-                                        "user_email_id"=> $email,
-                                        "user_phone_number"=> $contact
+                                        "user_id"=> $user_id,
+                                        "user_token"=> $user_token,
+                                        "first_time_login"=>$first_time_login,
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
                                 "http_code"=> 200
                             );
-                        }
+
                         echo json_encode($succ);
 
                     } else if (strcmp($login_row['type'], 'super_admin') == 0) {
-                        
-                        $details_query = "SELECT * FROM superadmin_details WHERE id=".$login_row['id']."";
-                        $details_result = mysqli_query ($conn, $details_query);
-                        while($details_row = mysqli_fetch_array($details_result)) {
-                            $name = $details_row['full_name'];
-                            $contact = $details_row['contact'];
-                            $email = $details_row['email_id'];
+                        if($login_row['user_token'] == ""){
+                            $first_time_login = 1;
+                        }else{
+                            $first_time_login = 0;
+                        }
+
+                            $user_id = $login_row['id'];
+                            $user_token = $token;
                             $succ = array(
                                 "success"=> true,
                                 "message"=> "Logged in successfully",
                                 'result'=>array(
                                     "user_details"=> array(
-                                        "user_id"=> $details_row[0],
-                                        "user_token"=> $token,
-                                        "user_name"=> $name,
-                                        "user_email_id"=> $email,
-                                        "user_phone_number"=> $contact
+                                        "user_id"=> $user_id,
+                                        "user_token"=> $user_token,
+                                        "first_time_login"=>$first_time_login,
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
                                 "http_code"=> 200
                             );
-                        }
+
                         echo json_encode($succ);
 
                     } else if (strcmp($login_row['type'], 'other_admin') == 0) {
+                        if($login_row['user_token'] == ""){
+                            $first_time_login = 1;
+                        }else{
+                            $first_time_login = 0;
+                        }
 
-                        $details_query = "SELECT * FROM other_admin_details WHERE id=".$login_row['id']."";
-                        $details_result = mysqli_query ($conn, $details_query);
-                        while($details_row = mysqli_fetch_array($details_result)) {
-                            $name = $details_row[1];
-                            $contact = $details_row[2];
-                            $email = $details_row[3];
+                            $user_id = $login_row['id'];
+                            $user_token = $token;
                             $succ = array(
                                 "success"=> true,
                                 "message"=> "Logged in successfully",
                                 'result'=>array(
                                     "user_details"=> array(
-                                        "user_id"=> $details_row['id'],
-                                        "user_token"=> $token,
-                                        "user_name"=> $name,
-                                        "user_email_id"=> $email,
-                                        "user_phone_number"=> $contact
+                                        "user_id"=> $user_id,
+                                        "user_token"=> $user_token,
+                                        "first_time_login"=>$first_time_login,
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
                                 "http_code"=> 200
                             );
-                        }
+
                         echo json_encode($succ);
                     }
 
