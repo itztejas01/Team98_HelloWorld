@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   commonButtonStyle: {
     paddingVertical: 12,
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
