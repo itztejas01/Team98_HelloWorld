@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { TextField,Label,ModalLoader } from '../common';
+import { Image,View,StyleSheet,TouchableOpacity, Modal } from 'react-native';
+import { Button,TextField,Label, DropDown,TitleViewAllButtonHeader,NewCommonRadioButton } from '../common';
+import { connect } from 'react-redux';
+import {
+    usernameTypeChanged,
+    passwordTypeChanged,
+    usertypeNameChanged,
+    usertypeKeyChanged,
+  } from '../../action';
 
 const TYPE = [
     {
@@ -21,24 +28,29 @@ class UserType extends Component {
 
     state = {
         modalVisible: false,
-        userType: '',
-        username: '',
-        password: '',
+        // userType: '',
+        // username: '',
+        // password: '',
       };
     
       setModalVisible = modalVisible => {
         this.setState({ modalVisible: modalVisible });
       };
     
-      handleAnswers = (key, type
+      handleAnswers = (key, name
       ) => {
-        this.props.userTypeChanged(type);
-        this.props.userKeyChanged(key);
+        this.props.usertypeNameChanged(name);
+        this.props.usertypeKeyChanged(key);
         this.setModalVisible(false)
       };
     
     render() {
-        const {viewStyle, fieldStyle, buttonStyle} = styles;
+        const {
+            viewStyle, 
+            fieldStyle, 
+            buttonStyle,
+            selectedRb} = styles;
+        console.log('password',this.props.password_type);
     
     return (
       <View style={viewStyle}>  
@@ -47,9 +59,9 @@ class UserType extends Component {
         placeholder={'Username'}
         placeholderTextColor="#606060"
         hasBorder={true}
-        onChangeText={value => this.props.usernameChanged(value)}
+        value={this.props.username_type}
+        onChangeText={value => this.props.usernameTypeChanged(value)}
         highlightColor="#EDF0F7"
-        value={this.props.username}
         />
 
         <TextField
@@ -57,23 +69,26 @@ class UserType extends Component {
           placeholder={'Password'}
           placeholderTextColor="#606060"
           hasBorder={true}
-          onChangeText={value => this.props.passwordChanged(value)}
+          onChangeText={passwordType => this.props.passwordTypeChanged(passwordType)}
           highlightColor="#EDF0F7"
-          value={this.props.password}
+          value={this.props.password_type}
         />
 
         <DropDown
-        value={this.props.user_type}
+        value={this.props.usertype_name}
         onPressMain={() => {
         this.setModalVisible(true);
-
         }}
         onPress={() => {
         this.setModalVisible(true);
         }}
         style={{ height: 48, paddingHorizontal: 20, marginTop: 24 }}
         textStyle={{ letterSpacing: 0.3, }}
-        />
+        validationError={this.state.colorSubject == 'red' ? true : false}
+              placeholder={
+                this.state.colorSubject == 'red' ? 'Please enter a subject' : 'Subject'
+              }
+        /> 
 
         <Modal
         animationType="slide"
@@ -109,13 +124,13 @@ class UserType extends Component {
                 <TouchableOpacity
                     onPress={() => { this.setModalVisible(false) }}
                     style={{ position: 'absolute', right: 0, height: '80%', width: 30, paddingTop: 27 }}>
-                    <Image resizeMode='contain' onPress={() => { this.setModalVisible(false) }} style={{ width: 10, height: 10, }} source={require('../assets/Icons/NewIcons/Close-Button-Blue.png/Close-Button-Blue.png')} />
+                    <Image resizeMode='contain' onPress={() => { this.setModalVisible(false) }} style={{ width: 10, height: 10, }}  />
                 </TouchableOpacity>
                 </View>
                 <NewCommonRadioButton
                 PROP={TYPE}
                 style={{ paddingTop: 16, paddingLeft: 17, }}
-                defaultSelected={this.props.user_key}
+                defaultSelected={this.props.usertype_key}
                 titleStyle={{ fontSize: 17 }}
                 titleTextWeight={600}
                 buttonStyle={buttonStyle}
@@ -124,8 +139,17 @@ class UserType extends Component {
                 />
             </TouchableOpacity>
             </TouchableOpacity>
-        </Modal>
-      </View>
+         </Modal>
+
+        {/* <Button
+            buttonTitle="Submit"
+            mode="dark"
+            onPress={() => {
+              this._onSubmit();
+            }}
+            style={{ marginTop: 36, marginBottom: 12, width: '100%' }}
+          /> */}
+      </View> 
     )
   }
 }
@@ -143,6 +167,38 @@ const styles = StyleSheet.create({
       marginHorizontal: 24,
       backgroundColor: '#F6F7FB',
     },
+    selectedRb: {
+        height: 15,
+        width: 15,
+        borderRadius: 18,
+        borderWidth: 4.5,
+        borderColor: '#1B5ADE',
+    },
+    buttonStyle: {
+        height: 12,
+        width: 12,
+        borderRadius: 18,
+        borderWidth: 1.3,
+        borderColor: '#1B5ADE',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 8,
+        marginTop: 6,
+      },
   });
 
-  export default (UserType);
+const mapStateToProps = state => {
+    return {
+      username_type: state.superAdmin.user_name,
+      password_type: state.superAdmin.password,
+      usertype_name: state.superAdmin.usertype_name,
+      usertype_key: state.superAdmin.usertype_key,
+    }
+}
+
+  export default connect(mapStateToProps, {
+    usernameTypeChanged,
+    passwordTypeChanged,
+    usertypeNameChanged,
+    usertypeKeyChanged,
+  })(UserType);
