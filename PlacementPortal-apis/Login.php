@@ -24,9 +24,9 @@
                 }
                 $token = generateToken();
                 $token_query = "UPDATE `login` SET `user_token`='$token' WHERE id=".$login_row['id']."";
+                $type = $login_row['type'];
                 if (mysqli_query($conn, $token_query)) {
                     if (strcmp($login_row['type'], 'student')==0) {
-
                             $user_id = $login_row['id'];
                             $user_token = $token;
                             $succ = array(
@@ -36,6 +36,7 @@
                                     "user_details"=> array(
                                         "user_id"=> $user_id,
                                         "user_token"=> $user_token,
+                                        "type"=>$type,
                                         "first_time_login"=>$first_time_login,
                                     ),
                                 ),
@@ -61,6 +62,7 @@
                                     "user_details"=> array(
                                         "user_id"=> $user_id,
                                         "user_token"=> $user_token,
+                                        "type"=>$type,
                                         "first_time_login"=>$first_time_login,
                                     ),
                                 ),
@@ -86,6 +88,7 @@
                                     "user_details"=> array(
                                         "user_id"=> $user_id,
                                         "user_token"=> $user_token,
+                                        "type"=>$type,
                                         "first_time_login"=>$first_time_login,
                                     ),
                                 ),

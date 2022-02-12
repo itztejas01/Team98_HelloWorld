@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {InfoCard, Label, SmallInfoCard, smallInfoCard} from './common';
+import {InfoCard, Label, SmallInfoCard, TitleText} from './common';
 
 const cardProp = [
   {
@@ -61,6 +61,26 @@ class HomeScreen extends Component {
             textWeight={800}
             style={titleStyle}
           /> */}
+          {/* <TitleText
+            text="Welcome to this portal!"
+            textInHighlightedColor="portal"
+            basicTextColor="gray"
+            highlightTextColor="green"
+            highlightedTextWeight={800}
+            textAlign="left"
+            textSize={50}
+          /> */}
+          <TitleText
+            text="Welcome to this Portal!"
+            textInHighlightedColor="Portal!"
+            highlightTextColor="green"
+            highlightedTextWeight={700}
+            basicTextColor="#333333"
+            textWeight={700}
+            textSize={36}
+            textAlign="center"
+            style={{margin: 23}}
+          />
           <FlatList
             data={cardProp}
             renderItem={({item}) => (
@@ -118,6 +138,7 @@ const styles = StyleSheet.create({
   },
   secondStyle: {
     backgroundColor: 'green',
+    marginTop: 10,
   },
   footerStyle: {
     height: 50,
