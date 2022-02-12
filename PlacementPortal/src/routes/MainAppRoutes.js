@@ -9,7 +9,7 @@ import ForgotPasswordScreen from '../components/ForgotPasswordScreen';
 import SuperAdminDashboard from '../components/superadminScreens/SuperAdminDashboard';
 
 const MainStack = createNativeStackNavigator();
-// const drawer = createDrawerNavigator();
+const drawer = createDrawerNavigator();
 
 function MainAppRoutes() {
   return (
