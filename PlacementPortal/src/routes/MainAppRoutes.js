@@ -11,6 +11,7 @@ import AddCompany from '../components/superadminScreens/AddCompany';
 import PRNScreen from '../components/PRNScreen';
 import {Image, TouchableOpacity} from 'react-native';
 import TestScreen from '../components/testScreen/TestScreen';
+import AddJob from '../components/superadminScreens/AddJob';
 
 const MainStack = createNativeStackNavigator();
 const TestStack = createNativeStackNavigator();
