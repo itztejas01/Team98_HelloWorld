@@ -62,7 +62,10 @@ class Login extends Component {
           buttonTitle="Next"
           mode="dark"
           onPress={() => {
-            if (this.state.email != 'admin' || this.state.password != 'admin') {
+            if (
+              this.state.email != 'admin@somaiya.edu' ||
+              this.state.password != 'admin'
+            ) {
               console.log('Enter proper email');
             } else {
               this.props.navigation.navigate(HomeScreen);

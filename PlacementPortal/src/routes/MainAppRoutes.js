@@ -11,7 +11,7 @@ const MainStack = createNativeStackNavigator();
 function MainAppRoutes() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="Login">
+      <MainStack.Navigator initialRouteName="HomeScreen">
         {/* <MainStack.Screen name='Splash' component={SplashScreen} /> */}
         <MainStack.Screen
           name="HomeScreen"
