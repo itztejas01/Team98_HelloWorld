@@ -1,14 +1,19 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Feb 12, 2022 at 12:16 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
+=======
+-- Generation Time: Feb 12, 2022 at 10:56 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
+>>>>>>> 66c2473306201185e57c0241416da30f76c86ac4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -77,8 +82,13 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
+<<<<<<< HEAD
 INSERT INTO `login` (`id`, `user_token`, `user_name`, `password`, `type`) VALUES
 (1, '88e2b51701d09db138a6aaadf1567a6c', 'super_admin@somaiya.edu', '123456789', 'super_admin');
+=======
+INSERT INTO `login` (`id`, `user_id`, `user_token`, `user_name`, `password`, `type`) VALUES
+(1, 1, 'af5357228de9ac10fe1d9eee3375a389', 'super_admin@somaiya.edu', '123456789', 'super_admin');
+>>>>>>> 66c2473306201185e57c0241416da30f76c86ac4
 
 -- --------------------------------------------------------
 
