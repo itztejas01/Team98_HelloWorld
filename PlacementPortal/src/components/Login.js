@@ -4,12 +4,16 @@ import { Button, Label, TextField} from "./common";
 import HomeScreen from "./HomeScreen";
 
 class Login extends Component{
+    constructor(props) {  
+        super(props);  
+        this.state = {email: '', password:''};  
+    }  
     render(){
 
         const{
             viewStyle, fieldStyle, buttonStyle
         } = styles;
-
+        
         return(
             <View style={viewStyle}>
                 <TextField
@@ -17,7 +21,7 @@ class Login extends Component{
                   placeholder={'Email'}
                   placeholderTextColor="#606060"
                   hasBorder={true}
-                  onChangeText={value => this.props.emailIDChanged(value)}
+                  onChangeText={value => this.setState({email:value})}
                   highlightColor="#EDF0F7"/>
                 
                 <TextField
@@ -25,14 +29,14 @@ class Login extends Component{
                   placeholder={'Password'}
                   placeholderTextColor="#606060"
                   hasBorder={true}
-                  onChangeText={value => this.props.passwordChanged(value)}
+                  onChangeText={value => this.setState({password:value})}
                   highlightColor="#EDF0F7" />
                 
                 <Button
                     buttonTitle="Next"
                     mode="dark"
                     onPress={() => {
-                        if (this.props.emailIDChanged != 'jkb@somaiya.edu' || this.props.passwordChanged != 'admin'){
+                        if (this.state.email != 'admin' || this.state.password != 'admin'){
                             console.log("Enter proper email");
                         }else{
                             this.props.navigation.navigate(HomeScreen)
