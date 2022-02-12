@@ -23,7 +23,6 @@ export const loginAPI = (username, password) => {
             password: password,
         }
         axios({
-            signal: controller.signal,
             method: 'post',
             url: LOGIN_API,
             data,
