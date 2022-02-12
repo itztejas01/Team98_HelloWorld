@@ -25,28 +25,36 @@ export const loginAPI = (username, password) => {
       username: username,
       password: password,
     };
-    axios({
+    return axios({
       method: 'post',
       url: LOGIN_API,
       data,
     })
       .then(response => {
+        new Promise = ((resolve,reject)=>setTimeout(()=>resolve(),100))
         var responseData = response.data;
         if (responseData.success) {
+            dispatch({
+              type: TOGGLE_ADD_ADDRESS_LOADER,
+              payload: false,
+            });
           console.log(responseData);
+        return Promise.resolve(true)
         } else {
+            dispatch({
+                type: TOGGLE_ADD_ADDRESS_LOADER,
+                payload: false,
+              });
+            return Promise.resolve(false)
           // CODE
         }
 
-        dispatch({
-          type: TOGGLE_ADD_ADDRESS_LOADER,
-          payload: false,
-        });
       })
       .catch(err => {
         if (err.response.status !== 514 && err.response.status !== 404) {
           // code
         }
+        return Promise.reject(false)
       });
   };
 };
