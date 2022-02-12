@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Button, Label, TextField} from './common';
 import HomeScreen from './HomeScreen';
 
-import {usernameTextFieldChanged, passwordTextFieldChanged} from '../actions';
+import {usernameTextFieldChanged, passwordTextFieldChanged} from '../action';
 
 class ForgotPasswordScreen extends Component {
   passwordValidation = () => {

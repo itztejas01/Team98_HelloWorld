@@ -1,7 +1,7 @@
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React from 'react';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+// import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeScreen from '../components/HomeScreen';
 import Login from '../components/Login';
 import SplashScreen from '../components/SplashScreen';
@@ -10,14 +10,17 @@ import SuperAdminDashboard from '../components/superadminScreens/SuperAdminDashb
 import AddCompany from '../components/superadminScreens/AddCompany';
 
 const MainStack = createNativeStackNavigator();
-const drawer = createDrawerNavigator();
+// const drawer = createDrawerNavigator();
 
 function MainAppRoutes() {
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="addCompany">
-        <MainStack.Screen name='SuperAdminDash' component={SuperAdminDashboard} />
-        <MainStack.Screen name='addCompany' component={AddCompany} />
+        <MainStack.Screen
+          name="SuperAdminDash"
+          component={SuperAdminDashboard}
+        />
+        <MainStack.Screen name="addCompany" component={AddCompany} />
         <MainStack.Screen
           name="HomeScreen"
           component={HomeScreen}

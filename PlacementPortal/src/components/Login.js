@@ -4,7 +4,11 @@ import {connect} from 'react-redux';
 import {Button, Label, TextField} from './common';
 import HomeScreen from './HomeScreen';
 
-import {usernameTextFieldChanged, passwordTextFieldChanged,loginAPI} from '../actions';
+import {
+  usernameTextFieldChanged,
+  passwordTextFieldChanged,
+  loginAPI,
+} from '../action';
 
 class Login extends Component {
   constructor(props) {
