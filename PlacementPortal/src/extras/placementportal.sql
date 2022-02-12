@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
+-- Generation Time: Feb 12, 2022 at 12:16 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.1.33
+=======
 -- Generation Time: Feb 12, 2022 at 10:56 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
+>>>>>>> 66c2473306201185e57c0241416da30f76c86ac4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,7 +72,6 @@ CREATE TABLE `job_details` (
 
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
   `user_token` text NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -77,8 +82,13 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
+<<<<<<< HEAD
+INSERT INTO `login` (`id`, `user_token`, `user_name`, `password`, `type`) VALUES
+(1, '88e2b51701d09db138a6aaadf1567a6c', 'super_admin@somaiya.edu', '123456789', 'super_admin');
+=======
 INSERT INTO `login` (`id`, `user_id`, `user_token`, `user_name`, `password`, `type`) VALUES
 (1, 1, 'af5357228de9ac10fe1d9eee3375a389', 'super_admin@somaiya.edu', '123456789', 'super_admin');
+>>>>>>> 66c2473306201185e57c0241416da30f76c86ac4
 
 -- --------------------------------------------------------
 
@@ -88,6 +98,7 @@ INSERT INTO `login` (`id`, `user_id`, `user_token`, `user_name`, `password`, `ty
 
 CREATE TABLE `other_admin_details` (
   `id` int(11) NOT NULL,
+  `login_id` int(11) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `contact` bigint(255) NOT NULL,
   `email_id` varchar(100) NOT NULL
@@ -115,6 +126,7 @@ CREATE TABLE `qualifications` (
 
 CREATE TABLE `students_details` (
   `id` int(11) NOT NULL,
+  `login_id` int(11) NOT NULL,
   `prn no` int(16) NOT NULL,
   `name` varchar(100) NOT NULL,
   `gender` varchar(50) NOT NULL,
@@ -127,6 +139,13 @@ CREATE TABLE `students_details` (
   `language_know` text NOT NULL,
   `hobbies` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `students_details`
+--
+
+INSERT INTO `students_details` (`id`, `login_id`, `prn no`, `name`, `gender`, `date_of_birth`, `mobile_no`, `address_line_1`, `address_line_2`, `email_id`, `college_id`, `language_know`, `hobbies`) VALUES
+(1, 0, 12345678, 'XYZ', 'female', '2002-08-12', 123456669, '12', '20', 'xyz@gmail.com', 2, 'xy;yz', 'nothing');
 
 -- --------------------------------------------------------
 
@@ -163,10 +182,18 @@ CREATE TABLE `student_experience_details` (
 
 CREATE TABLE `superadmin_details` (
   `id` int(11) NOT NULL,
+  `login_id` int(11) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `contact` bigint(255) NOT NULL,
   `email_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `superadmin_details`
+--
+
+INSERT INTO `superadmin_details` (`id`, `login_id`, `full_name`, `contact`, `email_id`) VALUES
+(1, 1, 'Super admin', 1234567890, 'super_admin@somaiya.edu');
 
 --
 -- Indexes for dumped tables
@@ -240,7 +267,7 @@ ALTER TABLE `qualifications`
 -- AUTO_INCREMENT for table `students_details`
 --
 ALTER TABLE `students_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `student_certification`
