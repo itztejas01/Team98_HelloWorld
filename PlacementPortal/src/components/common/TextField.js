@@ -44,7 +44,12 @@ class TextField extends Component {
     }
   }
 
-  highlightColor(customBorderColor, highlightColor, defaultHightlightColor, validationTextField) {
+  highlightColor(
+    customBorderColor,
+    highlightColor,
+    defaultHightlightColor,
+    validationTextField,
+  ) {
     if (highlightColor !== undefined && this.state.isFocused) {
       return '#1B5ADE';
     }
@@ -54,7 +59,11 @@ class TextField extends Component {
     if (validationTextField) {
       return customBorderColor;
     }
-    if (highlightColor === undefined && this.state.isFocused && validationTextField !== undefined) {
+    if (
+      highlightColor === undefined &&
+      this.state.isFocused &&
+      validationTextField !== undefined
+    ) {
       return '#1B5ADE';
     }
     if (highlightColor === undefined) {
@@ -190,6 +199,9 @@ class TextField extends Component {
       highlightColor,
       letterSpacing,
       validationErrorTextField,
+      autoCapitalize,
+      autoCorrect,
+      autoCompleteType,
     } = this.props;
 
     const {imageStyle} = styles;
@@ -220,7 +232,7 @@ class TextField extends Component {
 
     if (validationErrorTextField) {
       var errorHasBorder = true;
-      return(
+      return (
         <View
           style={[
             this.customTextInputViewStyle(
@@ -266,9 +278,12 @@ class TextField extends Component {
               this.setState({isFocused: false});
             }}
             selectionColor={errorBorderColor}
+            autoCapitalize={autoCapitalize}
+            autoCorrect={autoCorrect}
+            autoCompleteType={autoCompleteType}
           />
         </View>
-      )
+      );
     }
 
     if (textFieldIcon) {
@@ -317,6 +332,9 @@ class TextField extends Component {
               this.setState({isFocused: false});
             }}
             selectionColor={'#1B5ADE'}
+            autoCapitalize={autoCapitalize}
+            autoCorrect={autoCorrect}
+            autoCompleteType={autoCompleteType}
           />
         </View>
       );
@@ -365,6 +383,9 @@ class TextField extends Component {
               this.setState({isFocused: false});
             }}
             selectionColor={'#1B5ADE'}
+            autoCapitalize={autoCapitalize}
+            autoCorrect={autoCorrect}
+            autoCompleteType={autoCompleteType}
           />
         </View>
       );
