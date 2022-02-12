@@ -52,13 +52,4 @@
     }
 
     echo json_encode($succ);
-
-
-    
-
-
-
-
-
-
 ?>
