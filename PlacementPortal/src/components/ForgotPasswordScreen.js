@@ -6,12 +6,7 @@ import HomeScreen from './HomeScreen';
 
 import {usernameTextFieldChanged, passwordTextFieldChanged} from '../actions';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {email: '', password: ''};
-  }
-
+class ForgotPasswordScreen extends Component {
   passwordValidation = () => {
     if (this.props.password == '') {
     } else {
@@ -22,23 +17,15 @@ class Login extends Component {
     }
   };
 
-  submitForm = (userName, password) => {
-    console.log(userName, password);
+  emailIdValidation = () => {
     var validEmail =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (userName == '') {
-      Alert.alert('Email are empty');
-    } else if (password === '') {
-      Alert.alert('password are empty');
+    if (this.props.emailId == '' || !this.props.emailId.match(validEmail)) {
+      //   code
     } else {
-      this.props
-        .loginAPI(userName, password, this.props.navigation)
-        .then(response => {
-          if (response) {
-            this.props.usernameTextFieldChanged('');
-            this.props.passwordTextFieldChanged('');
-          }
-        });
+      this.props.usernameTextFieldChanged('');
+      this.props.passwordTextFieldChanged('');
+      this.props.loginAPI();
     }
   };
 
@@ -48,23 +35,23 @@ class Login extends Component {
     return (
       <View style={viewStyle}>
         <Image
-          source={require('../assets/images/recruitment.png')}
+          source={require('../assets/images/forgot.png')}
           style={iconStyle}
         />
         <Label
-          text="LOGIN"
+          text="Enter your email..."
           textColor="green"
           style={loginStyle}
           textSize={20}
         />
         <TextField
           style={fieldStyle}
-          placeholder={'Email'}
+          //   placeholder={'Email'}
           placeholderTextColor="#606060"
           hasBorder={true}
-          value={this.props.username}
           onChangeText={value => this.props.usernameTextFieldChanged(value)}
           highlightColor="#EDF0F7"
+          value={this.props.username}
           autoCapitalize="none"
           autoCorrect={false}
           autoCompleteType="email"
@@ -72,32 +59,7 @@ class Login extends Component {
           keyboardType="email-address"
         />
 
-        <TextField
-          style={fieldStyle}
-          placeholder={'Password'}
-          placeholderTextColor="#606060"
-          hasBorder={true}
-          onChangeText={value => this.props.passwordTextFieldChanged(value)}
-          highlightColor="#EDF0F7"
-          value={this.props.password}
-        />
-
-        <Button
-          buttonTitle="Next"
-          mode="dark"
-          onPress={() => {
-            this.submitForm(this.props.username, this.props.password);
-          }}
-          style={buttonStyle}
-        />
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('ForgotPassword')}>
-          <Label
-            text="Forgot Password? Click here..."
-            textColor="gray"
-            textSize={12}
-          />
-        </TouchableOpacity>
+        <Button buttonTitle="Reset" mode="dark" style={buttonStyle} />
       </View>
     );
   }
@@ -129,21 +91,19 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     // marginTop: 100,
+    tintColor: 'green',
   },
   loginStyle: {
     marginTop: 20,
   },
 });
 
-const mapStateToProps = state => {
+mapStateToProps = state => {
   return {
-    username: state.login.login_username,
-    password: state.login.login_password,
+    username: state.login.username,
   };
 };
 
 export default connect(mapStateToProps, {
   usernameTextFieldChanged,
-  passwordTextFieldChanged,
-  loginAPI,
-})(Login);
+})(ForgotPasswordScreen);
