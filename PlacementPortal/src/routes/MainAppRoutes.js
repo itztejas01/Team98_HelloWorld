@@ -6,14 +6,16 @@ import HomeScreen from '../components/HomeScreen';
 import Login from '../components/Login';
 import SplashScreen from '../components/SplashScreen';
 import SuperAdminDashboard from '../components/superadminScreens/SuperAdminDashboard';
+import AddCompany from '../components/superadminScreens/AddCompany';
 
 const MainStack = createNativeStackNavigator();
 
 function MainAppRoutes() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="HomeScreen">
+      <MainStack.Navigator initialRouteName="addCompany">
         <MainStack.Screen name='SuperAdminDash' component={SuperAdminDashboard} />
+        <MainStack.Screen name='addCompany' component={AddCompany} />
         <MainStack.Screen
           name="HomeScreen"
           component={HomeScreen}

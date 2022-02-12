@@ -34,16 +34,9 @@
                                 "message"=> "Logged in successfully",
                                 'result'=>array(
                                     "user_details"=> array(
-<<<<<<< HEAD
-                                        "user_id"=> $details_row[0],
-                                        "user_token"=> $token,
-                                        "user_name"=> $name,
-                                        "type"=> "Student"
-=======
                                         "user_id"=> $user_id,
                                         "user_token"=> $user_token,
                                         "first_time_login"=>$first_time_login,
->>>>>>> f8cd5a39638f3574a9c656bc618e952c8929769d
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
@@ -66,16 +59,9 @@
                                 "message"=> "Logged in successfully",
                                 'result'=>array(
                                     "user_details"=> array(
-<<<<<<< HEAD
-                                        "user_id"=> $details_row[0],
-                                        "user_token"=> $token,
-                                        "user_name"=> $name,
-                                        "type"=> "Super Admin"
-=======
                                         "user_id"=> $user_id,
                                         "user_token"=> $user_token,
                                         "first_time_login"=>$first_time_login,
->>>>>>> f8cd5a39638f3574a9c656bc618e952c8929769d
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
@@ -98,16 +84,9 @@
                                 "message"=> "Logged in successfully",
                                 'result'=>array(
                                     "user_details"=> array(
-<<<<<<< HEAD
-                                        "user_id"=> $details_row['id'],
-                                        "user_token"=> $token,
-                                        "user_name"=> $name,
-                                        "type"=> "Other Admin"
-=======
                                         "user_id"=> $user_id,
                                         "user_token"=> $user_token,
                                         "first_time_login"=>$first_time_login,
->>>>>>> f8cd5a39638f3574a9c656bc618e952c8929769d
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
