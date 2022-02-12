@@ -7,14 +7,29 @@ import Login from '../components/Login';
 import SplashScreen from '../components/SplashScreen';
 
 const MainStack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
 
 function MainAppRoutes() {
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="HomeScreen">
         {/* <MainStack.Screen name='Splash' component={SplashScreen} /> */}
-        <MainStack.Screen name="HomeScreen" component={HomeScreen} />
+        <MainStack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            title: 'Placement Portal',
+            headerStyle: {
+              backgroundColor: 'green',
+            },
+            headerTintColor: 'white',
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              color: 'white',
+              fontWeight: '600',
+              fontSize: 25,
+            },
+          }}
+        />
         <MainStack.Screen name="Login" component={Login} />
       </MainStack.Navigator>
     </NavigationContainer>

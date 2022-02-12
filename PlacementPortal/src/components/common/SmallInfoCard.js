@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
-import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
-import {Label} from './';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
+import {Label} from '.';
 
-class InfoCard extends Component {
+class SmallInfoCard extends Component {
   /*=====FUNCTION COMMENT BEGINS=====\n
           1. Developer Name: Jeet Bhanushali \n
           2. Developer Email ID: jeetkatariya01970@gmail.com \n
@@ -24,16 +30,9 @@ class InfoCard extends Component {
         <Label
           textColor="gray"
           text={buttonTitle}
-          textSize={20}
+          textSize={18}
           textWeight={50}
           style={titleStyle}
-        />
-        <Label
-          textColor="gray"
-          text={buttonDescription}
-          textSize={14}
-          textWeight={400}
-          style={descriptionStyle}
         />
         {/* </TouchableOpacity> */}
       </View>
@@ -52,9 +51,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    width: '95%',
+    width: Dimensions.get('window').width,
     borderRadius: 10,
     elevation: 1,
+    height: 180,
+    margin: 10,
   },
 
   iconStyle: {
@@ -81,11 +82,11 @@ const styles = StyleSheet.create({
 
   descriptionStyle: {
     justifyContent: 'center',
-    lineHeight: 23,
+    lineHeight: 27,
     marginBottom: 15,
     marginHorizontal: 15,
     textAlign: 'center',
   },
 });
 
-export {InfoCard};
+export {SmallInfoCard};
