@@ -24,8 +24,8 @@
                 }
                 $token = generateToken();
                 $token_query = "UPDATE `login` SET `user_token`='$token' WHERE id=".$login_row['id']."";
+                $type = $login_row['type'];
                 if (mysqli_query($conn, $token_query)) {
-                    $type = $login_row['type']
                     if (strcmp($login_row['type'], 'student')==0) {
                             $user_id = $login_row['id'];
                             $user_token = $token;
