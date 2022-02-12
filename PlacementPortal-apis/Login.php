@@ -11,10 +11,10 @@
 
     $params = ['username', 'password'];
 
-    $login_query = "SELECT id, password FROM login WHERE username='$username'";
-    $login_result = mysqli_query($conn, $login_query);
-    while($login_row = mysqli_fetch_array($login_result)) {
-        if (isset($data['username']) && isset($data['password'])) {
+    if (isset($data['username']) && isset($data['password'])) {
+        $login_query = "SELECT id, password FROM login WHERE username='$username'";
+        $login_result = mysqli_query($conn, $login_query);
+        while($login_row = mysqli_fetch_array($login_result)) {
             if (strcmp($data['password'],$login_row['password'])==0) {
                 $token = generateToken();
                 $token_query = "UPDATE TABLE login SET user_token='$token' WHERE id='".$login_row[0]."'";
@@ -114,15 +114,15 @@
                 );
                 echo json_encode($err);
             }
-        } else {
-            $err = array(
-                'success'=> false,
-                'http code'=> 513,
-                'message'=> 'Please provide either phone number or email id!',
-            );
-            header("HTTP/1.1 513 All Parameters not provided!");
-            echo json_encode($err);
         }
+    } else {
+        $err = array(
+            'success'=> false,
+            'http code'=> 513,
+            'message'=> 'Please provide either phone number or email id!',
+        );
+        header("HTTP/1.1 513 All Parameters not provided!");
+        echo json_encode($err);
     }
 
 ?>
