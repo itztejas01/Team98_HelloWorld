@@ -12,7 +12,7 @@ function MainAppRoutes (){
         <MainStack.Navigator initialRouteName="Login">
             {/* <MainStack.Screen name='Splash' component={SplashScreen} /> */}
             <MainStack.Screen name='Login' component={Login} />
-            <MainStack.Screen name='Home' component={HomeScreen} />
+            <MainStack.Screen name='HomeScreen' component={HomeScreen} />
         </MainStack.Navigator>
     </NavigationContainer>)
    
