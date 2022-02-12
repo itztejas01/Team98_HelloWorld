@@ -8,13 +8,14 @@ import SplashScreen from "../components/SplashScreen";
 const MainStack = createNativeStackNavigator();
 
 function MainAppRoutes (){
-    <NavigationContainer>
-        <MainStack.Navigator initialRouteName="Splash">
-            <MainStack.Screen name='Splash' component={SplashScreen} />
+    return( <NavigationContainer>
+        <MainStack.Navigator initialRouteName="Login">
+            {/* <MainStack.Screen name='Splash' component={SplashScreen} /> */}
             <MainStack.Screen name='Login' component={Login} />
             <MainStack.Screen name='Home' component={HomeScreen} />
         </MainStack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer>)
+   
 }
 
 export default MainAppRoutes;
