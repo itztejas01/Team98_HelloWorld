@@ -1,19 +1,46 @@
 import React, { Component } from "react";
 import { StyleSheet, View, } from "react-native";
+import { connect } from "react-redux";
 import { Button, Label, TextField} from "./common";
 import HomeScreen from "./HomeScreen";
+
+import { usernameTextFieldChanged, passwordTextFieldChanged } from "../actions";
 
 class Login extends Component{
     constructor(props) {  
         super(props);  
-        this.state = {email: '', password:''};  
-    }  
+        this.state = {email: '', password:''};
+    }
+
+    passwordValidation = () => {
+        if (this.props.password == '') {
+
+        } else {
+          this.props.mobilenumChanged('')
+          this.props.navigation.navigate('Welcome', {
+            screen: 'SignIn',
+          });
+        }
+    };
+
+    emailIdValidation = () => {
+        var validEmail =
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (this.props.emailId == '' || !this.props.emailId.match(validEmail)) {
+            //   code
+        } else {
+            this.props.usernameTextFieldChanged('');
+            this.props.passwordTextFieldChanged('');
+            this.props.loginAPI();
+        }
+    };
+
     render(){
 
         const{
             viewStyle, fieldStyle, buttonStyle
         } = styles;
-        
+
         return(
             <View style={viewStyle}>
                 <TextField
@@ -21,25 +48,29 @@ class Login extends Component{
                   placeholder={'Email'}
                   placeholderTextColor="#606060"
                   hasBorder={true}
-                  onChangeText={value => this.setState({email:value})}
-                  highlightColor="#EDF0F7"/>
+                  onChangeText={value => this.props.usernameTextFieldChanged(value)}
+                  highlightColor="#EDF0F7"
+                  value={this.props.username}
+                />
                 
                 <TextField
                   style={fieldStyle}
                   placeholder={'Password'}
                   placeholderTextColor="#606060"
                   hasBorder={true}
-                  onChangeText={value => this.setState({password:value})}
-                  highlightColor="#EDF0F7" />
+                  onChangeText={value => this.props.passwordTextFieldChanged(value)}
+                  highlightColor="#EDF0F7" 
+                  value={this.props.password}
+                />
                 
                 <Button
                     buttonTitle="Next"
                     mode="dark"
                     onPress={() => {
-                        if (this.state.email != 'admin' || this.state.password != 'admin'){
+                        if (this.state.email != '' || this.state.password != 'admin'){
                             console.log("Enter proper email");
                         }else{
-                            this.props.navigation.navigate(HomeScreen)
+                            this.props.navigation.navigate(HomeScreen);
                             // console.log(this.props.navigation)
                         }
                     }}
@@ -76,4 +107,14 @@ const styles = StyleSheet.create({
 
 });
 
-export default Login;
+mapStateToProps = state => {
+    return{
+        username: state.login.username,
+        password: state.login.password,
+    }
+}
+
+export default connect(mapStateToProps, {
+    usernameTextFieldChanged,
+    passwordTextFieldChanged,
+}) (Login);

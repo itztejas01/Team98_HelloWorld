@@ -1,0 +1,1 @@
+export const LOGIN_API = "192.168.29.216/Projects/PlacementPortal-apis/login.php";

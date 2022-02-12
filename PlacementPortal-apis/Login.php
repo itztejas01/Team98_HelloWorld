@@ -36,8 +36,7 @@
                                         "user_id"=> $details_row[0],
                                         "user_token"=> $token,
                                         "user_name"=> $name,
-                                        "user_email_id"=> $email,
-                                        "user_phone_number"=> $contact
+                                        "type"=> "Student"
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
@@ -62,8 +61,7 @@
                                         "user_id"=> $details_row[0],
                                         "user_token"=> $token,
                                         "user_name"=> $name,
-                                        "user_email_id"=> $email,
-                                        "user_phone_number"=> $contact
+                                        "type"=> "Super Admin"
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
@@ -88,8 +86,7 @@
                                         "user_id"=> $details_row['id'],
                                         "user_token"=> $token,
                                         "user_name"=> $name,
-                                        "user_email_id"=> $email,
-                                        "user_phone_number"=> $contact
+                                        "type"=> "Other Admin"
                                     ),
                                 ),
                                 "serverdatetime"=> date('Y/M/D H:i:s'),
