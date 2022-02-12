@@ -40,6 +40,7 @@ class Login extends Component{
                             console.log("Enter proper email");
                         }else{
                             this.props.navigation.navigate(HomeScreen)
+                            // console.log(this.props.navigation)
                         }
                     }}
                     style={buttonStyle}
