@@ -1,4 +1,4 @@
-import { PASSWORD_TEXTFIELD_CHANGED, USERNAME_TEXT_FIELD_CHANGED,TOGGLE_LOGIN_LOADER } from "../actions/ActionTypes";
+import { PASSWORD_TEXTFIELD_CHANGED, USERNAME_TEXT_FIELD_CHANGED,TOGGLE_LOGIN_LOADER } from "../actions/actionTypes";
 
 var INITIAL_STATE = {
     login_username: "",

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { LOGIN_API } from "../extras/APIs";
-import { PASSWORD_TEXTFIELD_CHANGED, USERNAME_TEXT_FIELD_CHANGED,TOGGLE_LOGIN_LOADER } from "./ActionTypes";
+import { PASSWORD_TEXTFIELD_CHANGED, USERNAME_TEXT_FIELD_CHANGED,TOGGLE_LOGIN_LOADER } from "./actionTypes";
 
 export const usernameTextFieldChanged = value => {
     return dispatch=>{
