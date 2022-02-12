@@ -5,6 +5,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeScreen from '../components/HomeScreen';
 import Login from '../components/Login';
 import SplashScreen from '../components/SplashScreen';
+import ForgotPasswordScreen from '../components/ForgotPasswordScreen';
 
 const MainStack = createNativeStackNavigator();
 
@@ -30,7 +31,16 @@ function MainAppRoutes() {
             },
           }}
         />
-        <MainStack.Screen name="Login" component={Login} />
+        <MainStack.Screen
+          name="Login"
+          component={Login}
+          options={{headerShown: false}}
+        />
+        <MainStack.Screen
+          name="ForgotPassword"
+          component={ForgotPasswordScreen}
+          options={{headerShown: false}}
+        />
       </MainStack.Navigator>
     </NavigationContainer>
   );

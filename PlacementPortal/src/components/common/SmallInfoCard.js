@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    width: Dimensions.get('window').width,
+    width: Dimensions.get('window').width - 16,
     borderRadius: 10,
     elevation: 1,
     height: 180,
-    margin: 10,
+    margin: 8,
   },
 
   iconStyle: {

@@ -6,12 +6,7 @@ import HomeScreen from './HomeScreen';
 
 import {usernameTextFieldChanged, passwordTextFieldChanged} from '../actions';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {email: '', password: ''};
-  }
-
+class ForgotPasswordScreen extends Component {
   passwordValidation = () => {
     if (this.props.password == '') {
     } else {
@@ -40,18 +35,18 @@ class Login extends Component {
     return (
       <View style={viewStyle}>
         <Image
-          source={require('../assets/images/recruitment.png')}
+          source={require('../assets/images/forgot.png')}
           style={iconStyle}
         />
         <Label
-          text="LOGIN"
+          text="Enter your email..."
           textColor="green"
           style={loginStyle}
           textSize={20}
         />
         <TextField
           style={fieldStyle}
-          placeholder={'Email'}
+          //   placeholder={'Email'}
           placeholderTextColor="#606060"
           hasBorder={true}
           onChangeText={value => this.props.usernameTextFieldChanged(value)}
@@ -64,39 +59,7 @@ class Login extends Component {
           keyboardType="email-address"
         />
 
-        <TextField
-          style={fieldStyle}
-          placeholder={'Password'}
-          placeholderTextColor="#606060"
-          hasBorder={true}
-          onChangeText={value => this.props.passwordTextFieldChanged(value)}
-          highlightColor="#EDF0F7"
-          value={this.props.password}
-        />
-        <Button
-          buttonTitle="Next"
-          mode="dark"
-          onPress={() => {
-            if (
-              this.state.email != 'admin@somaiya.edu' ||
-              this.state.password != 'admin'
-            ) {
-              console.log('Enter proper email');
-            } else {
-              this.props.navigation.navigate(HomeScreen);
-              // console.log(this.props.navigation)
-            }
-          }}
-          style={buttonStyle}
-        />
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('ForgotPassword')}>
-          <Label
-            text="Forgot Password? Click here..."
-            textColor="gray"
-            textSize={12}
-          />
-        </TouchableOpacity>
+        <Button buttonTitle="Reset" mode="dark" style={buttonStyle} />
       </View>
     );
   }
@@ -128,6 +91,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     // marginTop: 100,
+    tintColor: 'green',
   },
   loginStyle: {
     marginTop: 20,
@@ -137,11 +101,9 @@ const styles = StyleSheet.create({
 mapStateToProps = state => {
   return {
     username: state.login.username,
-    password: state.login.password,
   };
 };
 
 export default connect(mapStateToProps, {
   usernameTextFieldChanged,
-  passwordTextFieldChanged,
-})(Login);
+})(ForgotPasswordScreen);
