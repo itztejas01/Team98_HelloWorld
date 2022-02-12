@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 
-class HomeScreen extends Component{
+class SplashScreen extends Component{
     render(){
 
         const{
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
     // code
 });
 
-export default HomeScreen;
+export default SplashScreen;
