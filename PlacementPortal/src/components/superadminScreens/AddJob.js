@@ -26,7 +26,7 @@ class AddJob extends Component {
                     <Label style={textStyle} text='Job CTC' textColor='green' texSize={16} />
                     <TextField style={textFieldStyle} hasBorder={true} value={this.props.job_ctc} onChangeText={value => this.props.jobCTCTextChanged(value)} />
                     <Label style={textStyle} text='Job Description' textColor='green' texSize={16} />
-                    <TextField style={[textFieldStyle, {height: 200}]} hasBorder={true} value={this.props.job_desp} onChangeText={value => this.props.jobDespTextChanged(value)} multiline={true} />
+                    <TextField style={[textFieldStyle, {height: 200}]} textAlignVertical="top" hasBorder={true} value={this.props.job_desp} onChangeText={value => this.props.jobDespTextChanged(value)} multiline={true} />
                     <TouchableOpacity style={submitButtonStyle}>
                         <Label text='Submit' textColor='white' textSize={18} />
                     </TouchableOpacity>
