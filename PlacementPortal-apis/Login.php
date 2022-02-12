@@ -9,8 +9,6 @@
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
-    $params = ['username', 'password'];
-
     $login_query = "SELECT id, password FROM login WHERE username='$username'";
     $login_result = mysqli_query($conn, $login_query);
     while($login_row = mysqli_fetch_array($login_result)) {
