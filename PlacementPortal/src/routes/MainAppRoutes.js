@@ -7,6 +7,7 @@ import Login from '../components/Login';
 import SplashScreen from '../components/SplashScreen';
 import ForgotPasswordScreen from '../components/ForgotPasswordScreen';
 import SuperAdminDashboard from '../components/superadminScreens/SuperAdminDashboard';
+import AddCompany from '../components/superadminScreens/AddCompany';
 
 const MainStack = createNativeStackNavigator();
 const drawer = createDrawerNavigator();
@@ -14,11 +15,9 @@ const drawer = createDrawerNavigator();
 function MainAppRoutes() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="HomeScreen">
-        <MainStack.Screen
-          name="SuperAdminDash"
-          component={SuperAdminDashboard}
-        />
+      <MainStack.Navigator initialRouteName="addCompany">
+        <MainStack.Screen name='SuperAdminDash' component={SuperAdminDashboard} />
+        <MainStack.Screen name='addCompany' component={AddCompany} />
         <MainStack.Screen
           name="HomeScreen"
           component={HomeScreen}
