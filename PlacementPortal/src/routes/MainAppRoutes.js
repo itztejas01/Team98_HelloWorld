@@ -47,6 +47,7 @@ const TheRealMainStack = () => {
       <MainStack.Screen name="SuperAdminDash" component={SuperAdminDashboard} />
       <MainStack.Screen name="addCompany" component={AddCompany} />
       <MainStack.Screen name="HomeScreen" component={HomeScreen} />
+      <MainStack.Screen name="UserType" component={UserType} />
       {/* <MainStack.Screen
         name="Login"
         component={Login}
