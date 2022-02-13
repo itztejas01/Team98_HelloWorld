@@ -53,7 +53,7 @@ const TheRealMainStack = () => {
 
 const DrawerStack = () => {
   return (
-    <Drawer.Navigator initialRouteName="">
+    <Drawer.Navigator initialRouteName="HomeScreen">
       <Drawer.Screen
         name="InitialDrawerRoute"
         component={TheRealMainStack}
@@ -84,7 +84,7 @@ const DrawerStack = () => {
 function MainAppRoutes() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="UserType">
+      <MainStack.Navigator initialRouteName="HomeScreen">
         <MainStack.Screen
           name="SuperAdminDash"
           component={SuperAdminDashboard}
