@@ -24,3 +24,4 @@ export const CERTIFICATE_AUTHENTICATION_TEXT_CHANGED = "certificate_authenticati
 export const EXPERIENCE_COMPANY_NAME_TEXT_CHANGED = "experience_company_name_text_changed";
 export const EXPERIENCE_JOB_DESCRIPTION_TEXT_CHANGED = "experience_job_description_text_changed";
 export const EXPERIENCE_WORKING_TEXT_CHANGED = "experience_working_text_changed";
+export const PRN_NUMBER_TEXT_CHANGED = "prn_number_text_changed";

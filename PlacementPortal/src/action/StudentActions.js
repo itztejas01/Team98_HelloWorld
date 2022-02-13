@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CERTIFICATE_AUTHENTICATION_TEXT_CHANGED, CERTIFICATION_AUTHORITY_TEXT_CHANGED, CERTIFICATION_NAME_TEXT_CHANGED, EXPERIENCE_COMPANY_NAME_TEXT_CHANGED, EXPERIENCE_JOB_DESCRIPTION_TEXT_CHANGED, EXPERIENCE_WORKING_TEXT_CHANGED } from "./actionType";
+import { CERTIFICATE_AUTHENTICATION_TEXT_CHANGED, CERTIFICATION_AUTHORITY_TEXT_CHANGED, CERTIFICATION_NAME_TEXT_CHANGED, EXPERIENCE_COMPANY_NAME_TEXT_CHANGED, EXPERIENCE_JOB_DESCRIPTION_TEXT_CHANGED, EXPERIENCE_WORKING_TEXT_CHANGED, PRN_NUMBER_TEXT_CHANGED } from "./actionType";
 
 export const certificationNameTextChanged = value => {
     return {
@@ -39,6 +39,13 @@ export const experienceJobDescriptionTextChanged = value => {
 export const experienceWorkingTextChanged = value => {
     return {
         type: EXPERIENCE_WORKING_TEXT_CHANGED,
+        payload: value,
+    }
+}
+
+export const prnNumberTextchanged = value => {
+    return {
+        type: PRN_NUMBER_TEXT_CHANGED,
         payload: value,
     }
 }

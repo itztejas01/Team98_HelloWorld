@@ -1,4 +1,4 @@
-import { CERTIFICATE_AUTHENTICATION_TEXT_CHANGED, CERTIFICATION_AUTHORITY_TEXT_CHANGED, CERTIFICATION_NAME_TEXT_CHANGED, EXPERIENCE_COMPANY_NAME_TEXT_CHANGED, EXPERIENCE_JOB_DESCRIPTION_TEXT_CHANGED, EXPERIENCE_WORKING_TEXT_CHANGED } from "../action/actionType";
+import { CERTIFICATE_AUTHENTICATION_TEXT_CHANGED, CERTIFICATION_AUTHORITY_TEXT_CHANGED, CERTIFICATION_NAME_TEXT_CHANGED, EXPERIENCE_COMPANY_NAME_TEXT_CHANGED, EXPERIENCE_JOB_DESCRIPTION_TEXT_CHANGED, EXPERIENCE_WORKING_TEXT_CHANGED, PRN_NUMBER_TEXT_CHANGED } from "../action/actionType";
 
 var INITIAL_STATE = {
     certification_name: "",
@@ -7,6 +7,7 @@ var INITIAL_STATE = {
     experience_comapny_name: "", 
     experience_job_desp: "",
     experience_working_years: "",
+    prn_number: "",
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -23,6 +24,8 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, experience_job_desp: action.payload};
         case EXPERIENCE_WORKING_TEXT_CHANGED:
             return {...state, experience_working_years: action.payload};
+        case PRN_NUMBER_TEXT_CHANGED:
+            return {...state, prn_number: action.payload};
         default:
             return state;
 }
