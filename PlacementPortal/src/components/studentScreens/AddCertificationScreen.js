@@ -3,6 +3,7 @@ import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {Label} from '../common';
 import {TextField} from '../common/TextField';
 import { certificationAuthenticationTextChanged, certificationNameTextChanged, certificationAuthorityTextChanged } from '../../action/StudentActions';
+import { connect } from 'react-redux';
 
 class AddCertificationScreen extends Component {
 

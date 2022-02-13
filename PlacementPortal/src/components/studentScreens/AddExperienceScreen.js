@@ -3,6 +3,7 @@ import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {Label} from '../common';
 import {TextField} from '../common/TextField';
 import { experienceCompanyNameTextChanged, experienceJobDescriptionTextChanged, experienceWorkingTextChanged } from '../../action/StudentActions';
+import { connect } from 'react-redux';
 
 class AddExperienceScreen extends Component {
 
