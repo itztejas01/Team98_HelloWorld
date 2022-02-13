@@ -110,9 +110,9 @@ class UserType extends Component {
         }}
         style={{ height: 48, paddingHorizontal: 20, marginTop: 24, width: '57%', borderRadius:10, borderColor:'green' }}
         textStyle={{ letterSpacing: 0.3, }}
-        validationError={this.state.colorSubject == 'red' ? true : false}
+        validationError={this.state.userType == 'red' ? true : false}
         placeholder={
-          this.state.colorSubject == 'red' ? 'Please enter a subject' : 'Subject'
+          this.state.userType == 'red' ? 'Please enter a User-Type' : 'User-Type'
         }
         /> 
 
