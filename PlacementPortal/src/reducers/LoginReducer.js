@@ -13,7 +13,6 @@ var INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action);
   switch (action.type) {
     case USERNAME_TEXT_FIELD_CHANGED:
       return {...state, login_username: action.payload};
