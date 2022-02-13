@@ -8,5 +8,4 @@ export * from './ModalLoader';
 export * from './NewCommonRadioButton';
 export * from './TitleViewAllButtonHeader';
 export * from './DropDown';
-export * from './AddCertificationCard';
 export * from './CheckBox';
