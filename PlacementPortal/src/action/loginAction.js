@@ -19,7 +19,7 @@ export const passwordTextFieldChanged = value => {
   };
 };
 
-export const loginAPI = (username, password) => {
+export const loginAPI = (username, password,navigation) => {
   return dispatch => {
     var data = {
       username: username,
@@ -39,6 +39,7 @@ export const loginAPI = (username, password) => {
               payload: false,
             });
           console.log(responseData);
+          
         return Promise.resolve(true)
         } else {
             dispatch({
