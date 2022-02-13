@@ -31,7 +31,7 @@ export const loginAPI = (username, password) => {
       data,
     })
       .then(response => {
-        new Promise = ((resolve,reject)=>setTimeout(()=>resolve(),100))
+        new Promise((resolve,reject)=>setTimeout(()=>resolve(),100))
         var responseData = response.data;
         if (responseData.success) {
             dispatch({
