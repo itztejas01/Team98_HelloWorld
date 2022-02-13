@@ -9,7 +9,7 @@ import ForgotPasswordScreen from '../components/ForgotPasswordScreen';
 import SuperAdminDashboard from '../components/superadminScreens/SuperAdminDashboard';
 import AddCompany from '../components/superadminScreens/AddCompany';
 import UserType from '../components/superadminScreens/UserType';
-import PRNScreen from '../components/PRNScreen';
+import PRNScreen from '../components/studentScreens/PRNScreen';
 import {Image, TouchableOpacity} from 'react-native';
 import TestScreen from '../components/testScreen/TestScreen';
 import AddJob from '../components/superadminScreens/AddJob';
@@ -64,7 +64,7 @@ const TheRealMainStack = () => {
 
 const DrawerStack = () => {
   return (
-    <Drawer.Navigator initialRouteName="">
+    <Drawer.Navigator initialRouteName="HomeScreen">
       <Drawer.Screen
         name="InitialDrawerRoute"
         component={TheRealMainStack}
