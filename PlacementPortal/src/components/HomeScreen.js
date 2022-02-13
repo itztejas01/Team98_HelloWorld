@@ -102,6 +102,7 @@ class HomeScreen extends Component {
                   buttonTitle={item.title}
                   buttonDescription={item.desc}
                   style={boxStyle}
+                  onPress={()=>this.props.navigation.navigate('Login')}
                 />
               )}
             />

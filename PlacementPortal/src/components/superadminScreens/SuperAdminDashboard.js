@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import { Label } from "../common";
 
 class SuperAdminDashoard extends Component {
+    componentDidMount(){
+        this.props.navigation.setOptions({
+            headerShown:true
+        })
+    }
     render(){
 
         const {

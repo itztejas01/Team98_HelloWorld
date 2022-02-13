@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-import {Button, Label, TextField} from './common';
+import {Button, Label, TextField,ModalLoader} from './common';
 import HomeScreen from './HomeScreen';
 
 import {
@@ -16,16 +16,6 @@ class Login extends Component {
     this.state = {email: '', password: ''};
   }
 
-  passwordValidation = () => {
-    if (this.props.password == '') {
-    } else {
-      this.props.mobilenumChanged('');
-      this.props.navigation.navigate('Welcome', {
-        screen: 'SignIn',
-      });
-    }
-  };
-
   submitForm = (userName, password) => {
     console.log(userName, password);
     var validEmail =
@@ -35,20 +25,23 @@ class Login extends Component {
     } else if (password === '') {
       Alert.alert('password are empty');
     } else {
-      this.props
-        .loginAPI(userName, password, this.props.navigation)
-        .then(response => {
-          if (response) {
-            this.props.usernameTextFieldChanged('');
-            this.props.passwordTextFieldChanged('');
-          }
-        });
+      this.props.loginAPI(userName, password, this.props.navigation)
+      .then(response=>{
+        if(response){
+          this.props.usernameTextFieldChanged('')
+          this.props.passwordTextFieldChanged('')
+        }
+      })
     }
   };
 
+  loading(){
+    if(this.props.login_loader){
+      return <ModalLoader />
+    }
+  }
   render() {
     const {viewStyle, fieldStyle, buttonStyle, iconStyle, loginStyle} = styles;
-
     return (
       <View style={viewStyle}>
         <Image
@@ -102,6 +95,7 @@ class Login extends Component {
             textSize={12}
           />
         </TouchableOpacity>
+        {this.loading()}
       </View>
     );
   }
@@ -143,6 +137,7 @@ const mapStateToProps = state => {
   return {
     username: state.login.login_username,
     password: state.login.login_password,
+    login_loader:state.login.login_loader
   };
 };
 

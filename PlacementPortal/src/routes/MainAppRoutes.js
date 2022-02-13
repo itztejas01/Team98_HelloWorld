@@ -16,42 +16,51 @@ import AddJob from '../components/superadminScreens/AddJob';
 import AddExperienceScreen from '../components/studentScreens/AddExperienceScreen';
 import AddCertificationScreen from '../components/studentScreens/AddCertificationScreen';
 
+
 const MainStack = createNativeStackNavigator();
 const TestStack = createNativeStackNavigator();
+const HomeStackNav = createDrawerNavigator();
+const SuperAdminStackNav = createDrawerNavigator();
+const StudentStackNav = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 
-const Drawer = createDrawerNavigator();
-
-const TestStackNav = () => {
+const StudentStack = () => {
   return (
-    <TestStack.Navigator>
-      <TestStack.Screen name="TestScreen" component={TestScreen} />
+    <StudentStackNav.Navigator initialRouteName='PRNScreen' screenOptions={{headerShown:false}}>
 
-      <TestStack.Screen name="PRNScreen" component={PRNScreen} />
-      <TestStack.Screen
-        name="AddExperienceScreen"
+      <StudentStackNav.Screen name="PRNScreen" component={PRNScreen} />
+      <StudentStackNav.Screen name="Test Screen" component={TestScreen} />
+      <StudentStackNav.Screen
+        name="Add Experience Screen"
         component={AddExperienceScreen}
       />
-      <TestStack.Screen
-        name="AddCertificationScreen"
+      <StudentStackNav.Screen
+        name="Add Certification Screen"
         component={AddCertificationScreen}
       />
-    </TestStack.Navigator>
+    </StudentStackNav.Navigator>
   );
 };
+
+const SuperAdminStack = ()=>{
+  return (
+    <SuperAdminStackNav.Navigator initialRouteName='Dashboard' screenOptions={{headerShown:true}}>
+      <SuperAdminStackNav.Screen name="Dashboard" component={SuperAdminDashboard} />
+      <SuperAdminStackNav.Screen name="Add User" component={UserType} />
+      <SuperAdminStackNav.Screen name="Add Job" component={AddJob} />
+      <SuperAdminStackNav.Screen name="Add Company" component={AddCompany} />
+    </SuperAdminStackNav.Navigator>
+  )
+}
 
 const TheRealMainStack = () => {
   return (
     <MainStack.Navigator
       initialRouteName="HomeScreen"
-      screenOptions={{headerShown: false}}>
-      <MainStack.Screen name="SuperAdminDash" component={SuperAdminDashboard} />
-      <MainStack.Screen name="addCompany" component={AddCompany} />
-      <MainStack.Screen name="HomeScreen" component={HomeScreen} />
-      {/* <MainStack.Screen
-        name="Login"
-        component={Login}
-        options={{headerShown: false}}
-      /> */}
+      screenOptions={{headerShown: false, headerTitleAlign: 'center'}}>
+      <MainStack.Screen name="HomeScreen" component={HomeStack} />
+      <MainStack.Screen name="Super Admin" component={SuperAdminStack} />
+      <MainStack.Screen name='Student' component={StudentStack} />
       <MainStack.Screen
         name="ForgotPassword"
         component={ForgotPasswordScreen}
@@ -61,39 +70,51 @@ const TheRealMainStack = () => {
   );
 };
 
+const HomeStack = () => {
+  return (
+    <HomeStackNav.Navigator
+      initialRouteName="Home"
+      screenOptions={{headerShown: true,headerTitleAlign:'center'}}>
+      <HomeStackNav.Screen name="Home" component={HomeScreen} />
+      <HomeStackNav.Screen name="Login" component={Login} />
+    </HomeStackNav.Navigator>
+  );
+};
+
 const DrawerStack = () => {
   return (
-    <Drawer.Navigator initialRouteName="">
-      <Drawer.Screen
+    <Stack.Navigator
+      screenOptions={{
+        headerShown:false,
+        
+      }}>
+      <Stack.Screen
         name="InitialDrawerRoute"
         component={TheRealMainStack}
-        options={{
-          title: 'Placement Portal',
-          headerStyle: {
+        options={{title: 'Placement Portal',headerStyle: {
             backgroundColor: 'green',
           },
-          headerTintColor: 'white',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: 'white',
-            fontWeight: '600',
-            fontSize: 20,
-          },
+        headerTintColor: 'white',
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          color: 'white',
+          fontWeight: '600',
+          fontSize: 20,
+        }
         }}
       />
-      <Drawer.Screen
+      <Stack.Screen
         name="Login"
         component={Login}
-        // options={{headerShown: false}}
       />
-      <Drawer.Screen name="TestStack" component={TestStackNav} />
-    </Drawer.Navigator>
+    </Stack.Navigator>
   );
 };
 
 function MainAppRoutes() {
   return (
     <NavigationContainer>
+      
       <DrawerStack />
     </NavigationContainer>
   );

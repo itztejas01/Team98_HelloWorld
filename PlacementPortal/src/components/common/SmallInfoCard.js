@@ -25,7 +25,7 @@ class SmallInfoCard extends Component {
     const {greyContainer, iconStyle, titleStyle, descriptionStyle} = styles;
     return (
       <View style={[greyContainer, style]}>
-        {/* <TouchableOpacity onPress={onPress}> */}
+         <TouchableOpacity activeOpacity={0.7} style={{justifyContent:'center',alignItems:'center'}} onPress={onPress}>
         <Image source={iconImage} style={iconStyle} />
         <Label
           textColor="gray"
@@ -34,7 +34,7 @@ class SmallInfoCard extends Component {
           textWeight={50}
           style={titleStyle}
         />
-        {/* </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
     );
   }
