@@ -36,6 +36,7 @@ class AddJob extends Component {
     }
 }
 
+
 const styles = StyleSheet.create({
     rootViewStyle: {
         flex: 1,
