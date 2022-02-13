@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, TouchableOpacity, Button} from 'react-native';
-import {AddCertificationCard} from '../common';
+import {AddCertificationCard, AddExperienceCard} from '../common';
 
 class TestScreen extends Component {
   render() {
@@ -9,7 +9,17 @@ class TestScreen extends Component {
         <Button
           title="PRNScreen"
           onPress={() => this.props.navigation.navigate('PRNScreen')}></Button>
-        <AddCertificationCard />
+        {/* <AddCertificationCard /> */}
+        <Button
+          title="Add Experience"
+          onPress={() =>
+            this.props.navigation.navigate('AddExperienceScreen')
+          }></Button>
+        <Button
+          title="AddCertification"
+          onPress={() =>
+            this.props.navigation.navigate('AddCertificationScreen')
+          }></Button>
       </View>
     );
   }
