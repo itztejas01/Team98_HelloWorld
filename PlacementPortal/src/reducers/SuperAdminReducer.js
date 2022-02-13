@@ -23,18 +23,18 @@ var INITIAL_STATE = {
   usertype_name: 'User-Type',
   usertype_key: '',
   comapnyCheckbox: false,
-  job_title: "",
-  companyNameForJob: "Select Job",
-  job_ctc: "",
-  job_desp: "",
+  job_title: '',
+  companyNameForJob: 'Select Job',
+  job_ctc: '',
+  job_desp: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case COMPANY_NAME_TEXT_FIELD_CHANGED:
       return {...state, new_company_name: action.payload};
-      case USERNAME_TYPE_CHANGED:
-      return {...state, user_name: action.payload}
+    case USERNAME_TYPE_CHANGED:
+      return {...state, user_name: action.payload};
     case PASSWORD_TYPE_CHANGED:
       return {...state, password: action.payload};
     case USERTYPE_NAME_CHANGED:

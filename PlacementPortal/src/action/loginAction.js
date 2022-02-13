@@ -19,7 +19,7 @@ export const passwordTextFieldChanged = value => {
   };
 };
 
-export const loginAPI = (username, password) => {
+export const loginAPI = (username, password,navigation) => {
   return dispatch => {
     var data = {
       username: username,
@@ -31,30 +31,29 @@ export const loginAPI = (username, password) => {
       data,
     })
       .then(response => {
-        new Promise((resolve,reject)=>setTimeout(()=>resolve(),100))
+        new Promise((resolve, reject) => setTimeout(() => resolve(), 100));
         var responseData = response.data;
         if (responseData.success) {
-            dispatch({
-              type: TOGGLE_ADD_ADDRESS_LOADER,
-              payload: false,
-            });
+          dispatch({
+            type: TOGGLE_ADD_ADDRESS_LOADER,
+            payload: false,
+          });
           console.log(responseData);
-        return Promise.resolve(true)
+          return Promise.resolve(true);
         } else {
-            dispatch({
-                type: TOGGLE_ADD_ADDRESS_LOADER,
-                payload: false,
-              });
-            return Promise.resolve(false)
+          dispatch({
+            type: TOGGLE_ADD_ADDRESS_LOADER,
+            payload: false,
+          });
+          return Promise.resolve(false);
           // CODE
         }
-
       })
       .catch(err => {
         if (err.response.status !== 514 && err.response.status !== 404) {
           // code
         }
-        return Promise.reject(false)
+        return Promise.reject(false);
       });
   };
 };

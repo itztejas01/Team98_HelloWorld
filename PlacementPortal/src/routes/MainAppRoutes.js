@@ -13,6 +13,8 @@ import PRNScreen from '../components/PRNScreen';
 import {Image, TouchableOpacity} from 'react-native';
 import TestScreen from '../components/testScreen/TestScreen';
 import AddJob from '../components/superadminScreens/AddJob';
+import AddExperienceScreen from '../components/studentScreens/AddExperienceScreen';
+import AddCertificationScreen from '../components/studentScreens/AddCertificationScreen';
 
 const MainStack = createNativeStackNavigator();
 const TestStack = createNativeStackNavigator();
@@ -25,6 +27,14 @@ const TestStackNav = () => {
       <TestStack.Screen name="TestScreen" component={TestScreen} />
 
       <TestStack.Screen name="PRNScreen" component={PRNScreen} />
+      <TestStack.Screen
+        name="AddExperienceScreen"
+        component={AddExperienceScreen}
+      />
+      <TestStack.Screen
+        name="AddCertificationScreen"
+        component={AddCertificationScreen}
+      />
     </TestStack.Navigator>
   );
 };
@@ -37,6 +47,7 @@ const TheRealMainStack = () => {
       <MainStack.Screen name="SuperAdminDash" component={SuperAdminDashboard} />
       <MainStack.Screen name="addCompany" component={AddCompany} />
       <MainStack.Screen name="HomeScreen" component={HomeScreen} />
+      <MainStack.Screen name="UserType" component={UserType} />
       {/* <MainStack.Screen
         name="Login"
         component={Login}
@@ -84,44 +95,6 @@ const DrawerStack = () => {
 function MainAppRoutes() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="UserType">
-        <MainStack.Screen
-          name="SuperAdminDash"
-          component={SuperAdminDashboard}
-        />
-        <MainStack.Screen
-          name="UserType"
-          component={UserType}
-        />
-        <MainStack.Screen name="addCompany" component={AddCompany} />
-        <MainStack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{
-            title: 'Placement Portal',
-            headerStyle: {
-              backgroundColor: 'green',
-            },
-            headerTintColor: 'white',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              color: 'white',
-              fontWeight: '600',
-              fontSize: 25,
-            },
-          }}
-        />
-        <MainStack.Screen
-          name="Login"
-          component={Login}
-          options={{headerShown: false}}
-        />
-        <MainStack.Screen
-          name="ForgotPassword"
-          component={ForgotPasswordScreen}
-          options={{headerShown: false}}
-        />
-      </MainStack.Navigator>
       <DrawerStack />
     </NavigationContainer>
   );

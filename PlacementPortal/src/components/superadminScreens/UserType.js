@@ -28,9 +28,9 @@ class UserType extends Component {
 
     state = {
         modalVisible: false,
-        // userType: '',
-        // username: '',
-        // password: '',
+        userType: '',
+        username: '',
+        password: '',
       };
     
       setModalVisible = modalVisible => {
@@ -43,17 +43,35 @@ class UserType extends Component {
         this.props.usertypeKeyChanged(key);
         this.setModalVisible(false)
       };
-    
+
+      _onSubmit() {
+        if (this.props.username_type === '') {
+          this.setState({ username: 'red' });
+        } else if (this.props.password_type === '') {
+          this.setState({ password: 'red' });
+        // } else (this.props.usertype_name === 'User-Type') {
+        //   this.setState({ userType: 'red' });
+        }
+        this.setState({ username: '' });
+        this.setState({ password: '' });
+        this.setState({ userType: '' });
+        this.props.usernameTypeChanged('');
+        this.props.passwordTypeChanged('');
+        this.props.usertypeNameChanged('User-Type');
+      }
+      
     render() {
         const {
             viewStyle, 
             fieldStyle, 
             buttonStyle,
+            cardStyle,
             selectedRb} = styles;
         console.log('password',this.props.password_type);
     
     return (
       <View style={viewStyle}>  
+      <View style={cardStyle}>
         <TextField
         style={fieldStyle}
         placeholder={'Username'}
@@ -62,6 +80,10 @@ class UserType extends Component {
         value={this.props.username_type}
         onChangeText={value => this.props.usernameTypeChanged(value)}
         highlightColor="#EDF0F7"
+        validationErrorTextField={this.state.username == 'red' ? true : false}
+        placeholder={
+          this.state.username == 'red' ? 'Please enter your Username' : 'Username'
+        }
         />
 
         <TextField
@@ -72,6 +94,10 @@ class UserType extends Component {
           onChangeText={passwordType => this.props.passwordTypeChanged(passwordType)}
           highlightColor="#EDF0F7"
           value={this.props.password_type}
+          validationErrorTextField={this.state.password == 'red' ? true : false}
+          placeholder={
+            this.state.password == 'red' ? 'Please enter your password' : 'Password'
+          }
         />
 
         <DropDown
@@ -82,12 +108,12 @@ class UserType extends Component {
         onPress={() => {
         this.setModalVisible(true);
         }}
-        style={{ height: 48, paddingHorizontal: 20, marginTop: 24 }}
+        style={{ height: 48, paddingHorizontal: 20, marginTop: 24, width: '57%', borderRadius:10, borderColor:'green' }}
         textStyle={{ letterSpacing: 0.3, }}
         validationError={this.state.colorSubject == 'red' ? true : false}
-              placeholder={
-                this.state.colorSubject == 'red' ? 'Please enter a subject' : 'Subject'
-              }
+        placeholder={
+          this.state.colorSubject == 'red' ? 'Please enter a subject' : 'Subject'
+        }
         /> 
 
         <Modal
@@ -113,7 +139,7 @@ class UserType extends Component {
                 <TitleViewAllButtonHeader
                     title='SELECT USER-TYPE'
                     viewBorderBottom={true}
-                    style={{ backgroundColor: '#F6F7FB', paddingTop: 24 }}
+                    style={{ backgroundColor: '#F6F7FB', paddingTop: 24, width:'87%' }}
                     headerStyle={{ letterSpacing: 2, }}
                     textWeight={600}
                     textSize={12}
@@ -140,15 +166,16 @@ class UserType extends Component {
             </TouchableOpacity>
             </TouchableOpacity>
          </Modal>
+         </View>
 
-        {/* <Button
+        <Button
             buttonTitle="Submit"
             mode="dark"
             onPress={() => {
               this._onSubmit();
             }}
-            style={{ marginTop: 36, marginBottom: 12, width: '100%' }}
-          /> */}
+            style={{ marginTop: 36, marginBottom: 12, width: '50%' }}
+          />
       </View> 
     )
   }
@@ -157,7 +184,7 @@ class UserType extends Component {
 const styles = StyleSheet.create({
     viewStyle: {
       alignItems: 'center',
-      justifyContent: 'center',
+      // justifyContent: 'center',
       backgroundColor: 'white',
       height: '100%',
     },
@@ -165,6 +192,8 @@ const styles = StyleSheet.create({
       marginTop: 22,
       width: '87%',
       marginHorizontal: 24,
+      borderRadius: 10,
+      borderColor: 'green',
       backgroundColor: '#F6F7FB',
     },
     selectedRb: {
@@ -173,6 +202,20 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         borderWidth: 4.5,
         borderColor: '#1B5ADE',
+    },
+    cardStyle:{
+      // flex:1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'white',
+      borderWidth:2,
+      borderTopLeftRadius:70,
+      borderBottomRightRadius:70,
+      borderColor:'black',
+      paddingBottom:50,
+      paddingTop:30,
+      marginHorizontal:10,
+      marginTop:30
     },
     buttonStyle: {
         height: 12,
