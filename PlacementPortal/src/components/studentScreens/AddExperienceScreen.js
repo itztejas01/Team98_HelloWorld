@@ -2,17 +2,10 @@ import React, {Component} from 'react';
 import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {Label} from '../common';
 import {TextField} from '../common/TextField';
+import { experienceCompanyNameTextChanged, experienceJobDescriptionTextChanged, experienceWorkingTextChanged } from '../../action/StudentActions';
+import { connect } from 'react-redux';
 
 class AddExperienceScreen extends Component {
-  /*=====FUNCTION COMMENT BEGINS=====\n
-          1. Developer Name: Jeet Bhanushali \n
-          2. Developer Email ID: jeetkatariya01970@gmail.com \n
-          3. Function Description:\n
-          4. Date Created: DD/MM/YY \n
-          5. Date Modified: DD/MM/YY \n
-          6. Parameter List: \n
-          7. Return type: \n
-        ======FUNCTION COMMENT ENDS======*/
 
   render() {
     const {iconImage, buttonTitle, buttonDescription, onPress, style} =
@@ -34,10 +27,10 @@ class AddExperienceScreen extends Component {
             placeholder={'Company Name'}
             placeholderTextColor="#606060"
             hasBorder={true}
-            onChangeText={value => this.props.usernameTextFieldChanged(value)}
+            onChangeText={value => this.props.experienceCompanyNameTextChanged(value)}
             highlightColor="#EDF0F7"
             maxLength={16}
-            value={this.props.username}
+            value={this.props.experience_company_name}
             autoCapitalize="none"
             autoCorrect={false}
             //   textContentType="number"
@@ -48,10 +41,10 @@ class AddExperienceScreen extends Component {
             placeholder={'Job Description'}
             placeholderTextColor="#606060"
             hasBorder={true}
-            onChangeText={value => this.props.usernameTextFieldChanged(value)}
+            onChangeText={value => this.props.experienceJobDescriptionTextChanged(value)}
             highlightColor="#EDF0F7"
             maxLength={16}
-            value={this.props.username}
+            value={this.props.experience_job_desp}
             autoCapitalize="none"
             autoCorrect={false}
             //   multiLine={true}
@@ -63,10 +56,10 @@ class AddExperienceScreen extends Component {
             placeholder={'Experience in years'}
             placeholderTextColor="#606060"
             hasBorder={true}
-            onChangeText={value => this.props.usernameTextFieldChanged(value)}
+            onChangeText={value => this.props.experienceWorkingTextChanged(value)}
             highlightColor="#EDF0F7"
             maxLength={16}
-            value={this.props.username}
+            value={this.props.experience_working_years}
             autoCapitalize="none"
             autoCorrect={false}
             //   textContentType="number"
@@ -115,4 +108,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddExperienceScreen;
+const mapStateToProps = state => {
+  return {
+    experience_company_name: state.student.experience_company_name,
+    experience_job_desp: state.student.experience_job_desp,
+    experience_working_years: state.student.experience_working_years,
+  }
+}
+
+export default connect(mapStateToProps, {
+  experienceCompanyNameTextChanged,
+  experienceJobDescriptionTextChanged,
+  experienceWorkingTextChanged,
+}) (AddExperienceScreen);

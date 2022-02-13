@@ -4,8 +4,6 @@ import {
   PASSWORD_TYPE_CHANGED,
   USERTYPE_NAME_CHANGED,
   USERTYPE_KEY_CHANGED,
-} from '../action/actionType';
-import {
   COMPANY_CHECKBOX_CHANGED,
   COMPANY_NAME_FOR_JOB_CHANGED,
   JOB_CTC_TEXT_CHANGED,
@@ -27,6 +25,7 @@ var INITIAL_STATE = {
   companyNameForJob: 'Select Job',
   job_ctc: '',
   job_desp: '',
+
 };
 
 export default (state = INITIAL_STATE, action) => {

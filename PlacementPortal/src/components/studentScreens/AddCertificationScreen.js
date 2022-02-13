@@ -2,17 +2,10 @@ import React, {Component} from 'react';
 import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {Label} from '../common';
 import {TextField} from '../common/TextField';
+import { certificationAuthenticationTextChanged, certificationNameTextChanged, certificationAuthorityTextChanged } from '../../action/StudentActions';
+import { connect } from 'react-redux';
 
 class AddCertificationScreen extends Component {
-  /*=====FUNCTION COMMENT BEGINS=====\n
-          1. Developer Name: Jeet Bhanushali \n
-          2. Developer Email ID: jeetkatariya01970@gmail.com \n
-          3. Function Description:\n
-          4. Date Created: DD/MM/YY \n
-          5. Date Modified: DD/MM/YY \n
-          6. Parameter List: \n
-          7. Return type: \n
-        ======FUNCTION COMMENT ENDS======*/
 
   render() {
     const {iconImage, buttonTitle, buttonDescription, onPress, style} =
@@ -28,10 +21,10 @@ class AddCertificationScreen extends Component {
             placeholder={'Certification Name'}
             placeholderTextColor="#606060"
             hasBorder={true}
-            onChangeText={value => this.props.usernameTextFieldChanged(value)}
+            onChangeText={value => this.props.certificationNameTextChanged(value)}
             highlightColor="#EDF0F7"
             maxLength={16}
-            value={this.props.username}
+            value={this.props.certification_name}
             autoCapitalize="none"
             autoCorrect={false}
             //   textContentType="number"
@@ -42,10 +35,10 @@ class AddCertificationScreen extends Component {
             placeholder={'Certification Authority'}
             placeholderTextColor="#606060"
             hasBorder={true}
-            onChangeText={value => this.props.usernameTextFieldChanged(value)}
+            onChangeText={value => this.props.certificationAuthorityTextChanged(value)}
             highlightColor="#EDF0F7"
             maxLength={16}
-            value={this.props.username}
+            value={this.props.certification_authority}
             autoCapitalize="none"
             autoCorrect={false}
             //   textContentType="number"
@@ -56,10 +49,10 @@ class AddCertificationScreen extends Component {
             placeholder={'Authentication Number'}
             placeholderTextColor="#606060"
             hasBorder={true}
-            onChangeText={value => this.props.usernameTextFieldChanged(value)}
+            onChangeText={value => this.props.certificationAuthenticationTextChanged(value)}
             highlightColor="#EDF0F7"
             maxLength={16}
-            value={this.props.username}
+            value={this.props.certification_authentication_number}
             autoCapitalize="none"
             autoCorrect={false}
             //   textContentType="number"
@@ -108,4 +101,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddCertificationScreen;
+const mapStateToProps = state => {
+  return {
+    certification_name: state.student.certification_name,
+    certification_authority: state.staudent.certification_authority,
+    certification_authentication_number: state.student.certificate_authentication_number,
+  }
+}
+
+export default connect(mapStateToProps, {
+  certificationAuthorityTextChanged,
+  certificationAuthenticationTextChanged,
+  certificationNameTextChanged,
+}) (AddCertificationScreen);

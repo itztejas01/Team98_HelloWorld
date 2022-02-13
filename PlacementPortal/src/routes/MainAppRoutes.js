@@ -9,7 +9,7 @@ import ForgotPasswordScreen from '../components/ForgotPasswordScreen';
 import SuperAdminDashboard from '../components/superadminScreens/SuperAdminDashboard';
 import AddCompany from '../components/superadminScreens/AddCompany';
 import UserType from '../components/superadminScreens/UserType';
-import PRNScreen from '../components/PRNScreen';
+import PRNScreen from '../components/studentScreens/PRNScreen';
 import {Image, TouchableOpacity} from 'react-native';
 import TestScreen from '../components/testScreen/TestScreen';
 import AddJob from '../components/superadminScreens/AddJob';
@@ -26,7 +26,7 @@ const Stack = createNativeStackNavigator();
 
 const StudentStack = () => {
   return (
-    <StudentStackNav.Navigator initialRouteName='PRNScreen' screenOptions={{headerShown:false}}>
+    <StudentStackNav.Navigator initialRouteName='PRNScreen' screenOptions={{headerShown:true}}>
 
       <StudentStackNav.Screen name="PRNScreen" component={PRNScreen} />
       <StudentStackNav.Screen name="Test Screen" component={TestScreen} />
@@ -56,15 +56,22 @@ const SuperAdminStack = ()=>{
 const TheRealMainStack = () => {
   return (
     <MainStack.Navigator
-      initialRouteName="HomeScreen"
-      screenOptions={{headerShown: false, headerTitleAlign: 'center'}}>
-      <MainStack.Screen name="HomeScreen" component={HomeStack} />
+      initialRouteName="Home Screen"
+      screenOptions={{headerShown: false}}>
+      <MainStack.Screen name="Home Screen" component={HomeStack} />
       <MainStack.Screen name="Super Admin" component={SuperAdminStack} />
-      <MainStack.Screen name='Student' component={StudentStack} />
+      <MainStack.Screen name="Student" component={StudentStack} />
+      <MainStack.Screen name="addCompany" component={AddCompany} />
+      
+      {/* <MainStack.Screen
+        name="Login"
+        component={Login}
+        options={{headerShown: false}}
+      /> */}
       <MainStack.Screen
         name="ForgotPassword"
         component={ForgotPasswordScreen}
-        options={{headerShown: false}}
+        options={{headerShown: true}}
       />
     </MainStack.Navigator>
   );
@@ -83,11 +90,7 @@ const HomeStack = () => {
 
 const DrawerStack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown:false,
-        
-      }}>
+    <Stack.Navigator initialRouteName="InitialDrawerRoute" screenOptions={{headerShown:false}}  >
       <Stack.Screen
         name="InitialDrawerRoute"
         component={TheRealMainStack}

@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-import {Button, Label, TextField} from './common';
-import HomeScreen from './HomeScreen';
-
-import {usernameTextFieldChanged, passwordTextFieldChanged} from '../action';
+import {Button, Label, TextField} from '../common';
+import { prnNumberTextchanged } from '../../action/StudentActions';
 
 class PRNScreen extends Component {
   passwordValidation = () => {
@@ -42,7 +40,7 @@ class PRNScreen extends Component {
     return (
       <View style={viewStyle}>
         <Image
-          source={require('../assets/images/school.png')}
+          source={require('../../assets/images/school.png')}
           style={iconStyle}
         />
         <Label
@@ -56,10 +54,10 @@ class PRNScreen extends Component {
           //   placeholder={'Email'}
           placeholderTextColor="#606060"
           hasBorder={true}
-          onChangeText={value => this.props.usernameTextFieldChanged(value)}
+          onChangeText={value => this.props.prnNumberTextchanged(value)}
           highlightColor="#EDF0F7"
           maxLength={16}
-          value={this.props.username}
+          value={this.props.prn_number}
           autoCapitalize="none"
           autoCorrect={false}
           textContentType="number"
@@ -67,7 +65,7 @@ class PRNScreen extends Component {
         />
         <TouchableOpacity>
           <Image
-            source={require('../assets/images/right-button.png')}
+            source={require('../../assets/images/right-button.png')}
             style={touchableStyle}
           />
         </TouchableOpacity>
@@ -117,10 +115,10 @@ const styles = StyleSheet.create({
 
 mapStateToProps = state => {
   return {
-    username: state.login.username,
+    prn_number: state.student.prn_number,
   };
 };
 
 export default connect(mapStateToProps, {
-  usernameTextFieldChanged,
+  prnNumberTextchanged,
 })(PRNScreen);

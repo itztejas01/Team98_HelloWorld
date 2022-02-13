@@ -16,3 +16,12 @@ export const JOB_TITLE_TEXTFIELD_CHANGED = "job_title_textfield_changed";
 export const COMPANY_NAME_FOR_JOB_CHANGED = "company_name_for_job_changed";
 export const JOB_CTC_TEXT_CHANGED = "job_ctc_text_changed";
 export const JOB_DESCRIPTION_TEXT_CHANGED = "job_description_text_changed";
+
+// student actions
+export const CERTIFICATION_NAME_TEXT_CHANGED = "certification_name_text_changed";
+export const CERTIFICATION_AUTHORITY_TEXT_CHANGED = "certification_authority_text_changed";
+export const CERTIFICATE_AUTHENTICATION_TEXT_CHANGED = "certificate_authentication_text_changed";
+export const EXPERIENCE_COMPANY_NAME_TEXT_CHANGED = "experience_company_name_text_changed";
+export const EXPERIENCE_JOB_DESCRIPTION_TEXT_CHANGED = "experience_job_description_text_changed";
+export const EXPERIENCE_WORKING_TEXT_CHANGED = "experience_working_text_changed";
+export const PRN_NUMBER_TEXT_CHANGED = "prn_number_text_changed";

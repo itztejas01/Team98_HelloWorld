@@ -7,6 +7,7 @@ import {applyMiddleware, createStore} from 'redux';
 import reducers from './reducers';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+import UserType from './components/superadminScreens/UserType';
 
 LogBox.ignoreAllLogs()
 
@@ -16,6 +17,7 @@ class App extends Component {
 
     return (
       <Provider store={store}>
+        {/* <UserType /> */}
         <MainAppRoutes />
       </Provider>
     );

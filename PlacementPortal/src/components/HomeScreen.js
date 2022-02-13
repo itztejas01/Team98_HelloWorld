@@ -71,8 +71,8 @@ class HomeScreen extends Component {
             textSize={50}
           /> */}
           <TitleText
-            text="Welcome to this Portal!"
-            textInHighlightedColor="Portal!"
+            text="This Portal will help you with!"
+            textInHighlightedColor="Portal"
             highlightTextColor="green"
             highlightedTextWeight={700}
             basicTextColor="#333333"
@@ -96,6 +96,7 @@ class HomeScreen extends Component {
             <FlatList
               horizontal={true}
               data={smallCardProp}
+              showsHorizontalScrollIndicator={true}
               renderItem={({item}) => (
                 <SmallInfoCard
                   iconImage={item.image}
@@ -108,7 +109,7 @@ class HomeScreen extends Component {
             />
           </View>
           <View style={footerStyle}>
-            <Label text="tc" />
+            <Label text="Placement Portal" textColor='grey' textSize={16} style={{marginLeft: 20, fontStyle:'italic'}} />
           </View>
         </ScrollView>
       </View>
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
   },
   footerStyle: {
     height: 50,
+    justifyContent: 'center', 
   },
 });
 
