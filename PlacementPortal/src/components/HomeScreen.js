@@ -71,8 +71,8 @@ class HomeScreen extends Component {
             textSize={50}
           /> */}
           <TitleText
-            text="Welcome to this Portal!"
-            textInHighlightedColor="Portal!"
+            text="This Portal will help you with!"
+            textInHighlightedColor="Portal"
             highlightTextColor="green"
             highlightedTextWeight={700}
             basicTextColor="#333333"

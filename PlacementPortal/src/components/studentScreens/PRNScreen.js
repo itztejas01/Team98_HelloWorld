@@ -42,7 +42,7 @@ class PRNScreen extends Component {
     return (
       <View style={viewStyle}>
         <Image
-          source={require('../assets/images/school.png')}
+          source={require('../../assets/images/school.png')}
           style={iconStyle}
         />
         <Label
@@ -67,7 +67,7 @@ class PRNScreen extends Component {
         />
         <TouchableOpacity>
           <Image
-            source={require('../assets/images/right-button.png')}
+            source={require('../../assets/images/right-button.png')}
             style={touchableStyle}
           />
         </TouchableOpacity>
