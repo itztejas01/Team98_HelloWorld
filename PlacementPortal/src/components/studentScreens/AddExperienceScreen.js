@@ -4,15 +4,6 @@ import {Label} from '../common';
 import {TextField} from '../common/TextField';
 
 class AddExperienceScreen extends Component {
-  /*=====FUNCTION COMMENT BEGINS=====\n
-          1. Developer Name: Jeet Bhanushali \n
-          2. Developer Email ID: jeetkatariya01970@gmail.com \n
-          3. Function Description:\n
-          4. Date Created: DD/MM/YY \n
-          5. Date Modified: DD/MM/YY \n
-          6. Parameter List: \n
-          7. Return type: \n
-        ======FUNCTION COMMENT ENDS======*/
 
   render() {
     const {iconImage, buttonTitle, buttonDescription, onPress, style} =
