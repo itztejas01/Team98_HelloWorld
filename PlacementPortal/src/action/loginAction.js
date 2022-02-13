@@ -19,7 +19,7 @@ export const passwordTextFieldChanged = value => {
   };
 };
 
-export const loginAPI = (username, password) => {
+export const loginAPI = (username, password,navigation) => {
   return dispatch => {
     var data = {
       username: username,

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-import {Button, Label, TextField} from './common';
-import HomeScreen from './HomeScreen';
+import {Button, Label, TextField} from '../common';
+import HomeScreen from '../HomeScreen';
 
-import {usernameTextFieldChanged, passwordTextFieldChanged} from '../action';
+import {usernameTextFieldChanged, passwordTextFieldChanged} from '../../action';
 
 class PRNScreen extends Component {
   passwordValidation = () => {

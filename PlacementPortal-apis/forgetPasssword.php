@@ -26,6 +26,13 @@
                     'http code'=>200,
                     'message'=>'New password has sent to email'
                 );
+                $body='
+                <p>New password is: </p><br>
+                <p>'.$password.'</p>
+                ';
+                $Subject = 'Login Credentials to '.$user_name.'';
+                $headers = 'From: Sender Admin ';
+                $mail = mail_sender($user_name,$Subject,$body,$headers);
                 echo json_encode($succ);
             }else{
                 $err = array(
